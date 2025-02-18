@@ -4,8 +4,7 @@ A sleek and dynamic quiz platform built with **React.js (Vite) & Tailwind CSS**.
 
 ## ✨ Features  
 ✅ **Engaging UI** – Clean and responsive design for a smooth experience.  
-⏳ **Timer-Based Quizzes** – 30 seconds per question to keep things challenging.  
-⚡ **Instant Feedback** – Know right away if your answer is correct.  
+⏳ **Timer-Based Quizzes** – 30 seconds per question to keep things challenging.
 🏆 **Scoreboard** – See your final score at the end of the quiz.  
 
 ## 🚀 Getting Started  
