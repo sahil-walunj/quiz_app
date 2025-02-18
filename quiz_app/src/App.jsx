@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Quiz from "./components/Quiz";
 import Scoreboard from "./components/Scoreboard";
 import { quizData } from "./data/quizData";
+import quizBg from './assets/quizbg.png';
+import quizBg_flipped from './assets/quizfliped.png';
 
 function App() {
   const [quizCompleted, setQuizCompleted] = useState(false);
@@ -13,10 +15,13 @@ function App() {
   };
 
   return (
-    <div className="h-screen bg-gray-900 text-white flex items-center justify-center">
-      <div className="w-full max-w-3xl bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col h-[90vh]">
-        <h1 className="text-3xl md:text-4xl font-bold text-center text-blue-400 pb-4">
-          🚀 Interactive Quiz
+    <div 
+    className="h-screen bg-cover bg-center text-white flex items-center justify-center" 
+    style={{ backgroundImage: `url(${quizBg})` }}
+    >
+      <div className="w-full bg-[#E3D5FF] max-w-3xl  p-6 border-[#865BBE] border-2 rounded-3xl shadow-lg flex flex-col h-[90vh]" >
+        <h1 className="text-3xl md:text-4xl font-bold text-center text-black pb-4">
+          Quiz
         </h1>
         
         {/* Quiz Content - Scrollable */}

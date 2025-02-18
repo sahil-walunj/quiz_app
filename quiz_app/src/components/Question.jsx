@@ -19,7 +19,7 @@ function Question({ question, onAnswer }) {
     
     return (
         <div className="space-y-6">
-            <h2 className="text-2xl font-semibold text-gray-300">{question.question}</h2>
+            <h2 className="text-xl sm:text-2xl  font-semibold text-black">{question.question}</h2>
 
             {question.type === "multiple-choice" ? (
                 <ul className="space-y-3">
@@ -27,8 +27,8 @@ function Question({ question, onAnswer }) {
                         <li
                             key={index}
                             onClick={() => handleOptionClick(option)}
-                            className={`p-4 bg-gray-700 rounded-lg cursor-pointer transition-all
-              hover:bg-blue-600 ${selectedOption && selectedOption.toString() === question.correctAnswer.toString()
+                            className={`p-4 bg-[#DECBFA] font-semibold rounded-lg cursor-pointer transition-all
+              hover:bg-[#AB6DFD] ${selectedOption && selectedOption.toString() === question.correctAnswer.toString()
                                     ? "bg-green-600"
                                     : selectedOption === option
                                         ? "bg-red-600"
@@ -46,12 +46,12 @@ function Question({ question, onAnswer }) {
                         type="number"
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
-                        className="p-3 border rounded-lg w-full bg-gray-700 text-white"
+                        className="p-3 border rounded-lg w-full bg-[#F0E4FF] text-black"
                         placeholder="Enter your answer"
                     />
                     <button
                         onClick={handleInputSubmit}
-                        className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg"
+                        className="bg-[#AB6DFD] hover:bg-[#783ED0] text-white px-4 py-2 rounded-lg"
                     >
                         Submit
                     </button>

@@ -60,8 +60,8 @@ function Quiz() {
   }, [timeLeft, currentQuestionIndex]);
 
   return (
-    <div className="p-3 flex items-center justify-center bg-gray-900 text-white">
-      <div className="w-full max-w-2xl p-6 bg-gray-800 rounded-lg shadow-lg">
+    <div className="p-3 flex items-center justify-center text-black">
+      <div className="w-full max-w-2xl p-6 rounded-lg shadow-lg">
         {quizCompleted ? (
           <Scoreboard 
             score={score} 
@@ -76,7 +76,7 @@ function Quiz() {
               question={quizData[currentQuestionIndex]} 
               onAnswer={handleAnswer} 
             />
-            <p className="text-gray-400 text-center mt-4">
+            <p className="text-black text-center mt-4">
               Question {currentQuestionIndex + 1} of {quizData.length}
             </p>
           </>
