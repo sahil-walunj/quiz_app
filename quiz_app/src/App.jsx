@@ -13,16 +13,20 @@ function App() {
   };
 
   return (
-    <div className="bg-gray-900 text-white flex items-center justify-center">
-      <div className="w-full max-w-3xl bg-gray-800 p-8 rounded-lg shadow-lg transition-all">
-        <h1 className="text-4xl font-bold text-center text-blue-400 mb-8">
-          🚀 Interactive Quiz Platform
+    <div className="h-screen bg-gray-900 text-white flex items-center justify-center">
+      <div className="w-full max-w-3xl bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col h-[90vh]">
+        <h1 className="text-3xl md:text-4xl font-bold text-center text-blue-400 pb-4">
+          🚀 Interactive Quiz
         </h1>
-        {!quizCompleted ? (
-          <Quiz onQuizCompletion={handleQuizCompletion} />
-        ) : (
-          <Scoreboard score={score} totalQuestions={quizData.length} />
-        )}
+        
+        {/* Quiz Content - Scrollable */}
+        <div className="flex-1 overflow-y-auto">
+          {!quizCompleted ? (
+            <Quiz onQuizCompletion={handleQuizCompletion} />
+          ) : (
+            <Scoreboard score={score} totalQuestions={quizData.length} />
+          )}
+        </div>
       </div>
     </div>
   );

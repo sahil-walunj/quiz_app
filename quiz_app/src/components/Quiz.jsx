@@ -55,7 +55,7 @@ function Quiz() {
   }, [timeLeft, currentQuestionIndex]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
+    <div className="p-3 flex items-center justify-center bg-gray-900 text-white">
       <div className="w-full max-w-2xl p-6 bg-gray-800 rounded-lg shadow-lg">
         {quizCompleted ? (
           <Scoreboard 
