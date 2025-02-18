@@ -20,6 +20,23 @@ export const openDB = () => {
     const store = transaction.objectStore("attempts");
     store.add(attempt);
   };
+  export const clearAttempts = async () => {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open("QuizDB", 1);
+  
+      request.onsuccess = (event) => {
+        const db = event.target.result;
+        const transaction = db.transaction("attempts", "readwrite");
+        const store = transaction.objectStore("attempts");
+        const clearRequest = store.clear();
+  
+        clearRequest.onsuccess = () => resolve();
+        clearRequest.onerror = () => reject(clearRequest.error);
+      };
+  
+      request.onerror = () => reject(request.error);
+    });
+  };
   
   export const getAttempts = async () => {
     const db = await openDB();

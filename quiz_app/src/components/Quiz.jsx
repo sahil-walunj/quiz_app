@@ -3,7 +3,7 @@ import Question from "./Question";
 import Timer from "./Timer";
 import Scoreboard from "./Scoreboard";
 import { quizData } from "../data/quizData";
-import { saveAttempt, getAttempts } from "../utils/indexedDB";
+import { saveAttempt, getAttempts,clearAttempts } from "../utils/indexedDB";
 
 function Quiz() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -34,12 +34,17 @@ function Quiz() {
     }
   };
 
-  const handleRestart = () => {
+  const handleRestart = async () => {
+    // Clear previous attempts
+    await clearAttempts(); // Ensure you implement this function in IndexedDB utility
+  
     setCurrentQuestionIndex(0);
     setScore(0);
     setTimeLeft(30);
     setQuizCompleted(false);
+    setAttempts([]); // Reset the attempts state
   };
+  
 
   useEffect(() => {
     if (timeLeft === 0) {
