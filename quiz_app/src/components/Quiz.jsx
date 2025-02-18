@@ -13,14 +13,12 @@ function Quiz() {
   const [attempts, setAttempts] = useState([]);
 
   useEffect(() => {
-    // Load past attempts
     getAttempts().then(setAttempts);
   }, []);
 
   const handleAnswer = (isCorrect, answer) => {
     if (isCorrect) setScore((prev) => prev + 1);
 
-    // Save answer to IndexedDB
     saveAttempt({ 
       question: quizData[currentQuestionIndex].question, 
       givenAnswer: answer, 
@@ -32,7 +30,7 @@ function Quiz() {
       setTimeLeft(30);
     } else {
       setQuizCompleted(true);
-      getAttempts().then(setAttempts); // Refresh attempt history
+      getAttempts().then(setAttempts);
     }
   };
 
@@ -57,26 +55,28 @@ function Quiz() {
   }, [timeLeft, currentQuestionIndex]);
 
   return (
-    <div className="space-y-6">
-      {quizCompleted ? (
-        <Scoreboard 
-          score={score} 
-          totalQuestions={quizData.length} 
-          onRestart={handleRestart} 
-          attempts={attempts} 
-        />
-      ) : (
-        <>
-          <Timer timeLeft={timeLeft} />
-          <Question 
-            question={quizData[currentQuestionIndex]} 
-            onAnswer={handleAnswer} 
+    <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
+      <div className="w-full max-w-2xl p-6 bg-gray-800 rounded-lg shadow-lg">
+        {quizCompleted ? (
+          <Scoreboard 
+            score={score} 
+            totalQuestions={quizData.length} 
+            onRestart={handleRestart} 
+            attempts={attempts} 
           />
-          <p className="text-gray-600 text-center">
-            Question {currentQuestionIndex + 1} of {quizData.length}
-          </p>
-        </>
-      )}
+        ) : (
+          <>
+            <Timer timeLeft={timeLeft} />
+            <Question 
+              question={quizData[currentQuestionIndex]} 
+              onAnswer={handleAnswer} 
+            />
+            <p className="text-gray-400 text-center mt-4">
+              Question {currentQuestionIndex + 1} of {quizData.length}
+            </p>
+          </>
+        )}
+      </div>
     </div>
   );
 }

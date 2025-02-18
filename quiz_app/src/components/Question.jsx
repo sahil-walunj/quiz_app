@@ -15,33 +15,40 @@ function Question({ question, onAnswer }) {
   };
 
   return (
-    <div className="space-y-4">
-      <h2 className="text-xl font-semibold text-gray-800">{question.question}</h2>
+    <div className="space-y-6">
+      <h2 className="text-2xl font-semibold text-gray-300">{question.question}</h2>
 
       {question.type === "multiple-choice" ? (
-        <ul className="space-y-2">
+        <ul className="space-y-3">
           {question.options.map((option, index) => (
             <li
               key={index}
               onClick={() => handleOptionClick(option)}
-              className="p-3 bg-gray-50 rounded-lg cursor-pointer hover:bg-blue-50 transition-colors"
+              className={`p-4 bg-gray-700 rounded-lg cursor-pointer transition-all
+                          hover:bg-blue-600 ${
+                            selectedOption === option 
+                            ? selectedOption === question.correctAnswer 
+                              ? "bg-green-600" 
+                              : "bg-red-600"
+                            : ""
+                          }`}
             >
               {option}
             </li>
           ))}
         </ul>
       ) : (
-        <div className="space-y-2">
+        <div className="space-y-3">
           <input
             type="number"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            className="p-2 border rounded-lg w-full"
+            className="p-3 border rounded-lg w-full bg-gray-700 text-white"
             placeholder="Enter your answer"
           />
           <button
             onClick={handleInputSubmit}
-            className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg"
           >
             Submit
           </button>
@@ -49,7 +56,7 @@ function Question({ question, onAnswer }) {
       )}
 
       {selectedOption && question.type === "multiple-choice" && (
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-gray-400">
           You selected: {selectedOption} (
           {selectedOption === question.correctAnswer ? "Correct" : "Incorrect"})
         </p>

@@ -13,10 +13,10 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-8">
-      <div className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md">
-        <h1 className="text-3xl font-bold text-center text-blue-600 mb-8">
-          Interactive Quiz Platform
+    <div className="bg-gray-900 text-white flex items-center justify-center">
+      <div className="w-full max-w-3xl bg-gray-800 p-8 rounded-lg shadow-lg transition-all">
+        <h1 className="text-4xl font-bold text-center text-blue-400 mb-8">
+          🚀 Interactive Quiz Platform
         </h1>
         {!quizCompleted ? (
           <Quiz onQuizCompletion={handleQuizCompletion} />
